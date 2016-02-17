@@ -35,6 +35,7 @@ extension UIBezierPath {
         closePath()
     }
 }
+
 @IBDesignable
 class ShapeView: UIView {
     @IBInspectable var radiusRange: CGFloat = 10
@@ -58,7 +59,7 @@ class ShapeView: UIView {
             var i:Int = 0
             while (i <= 30)
             {
-                var radius:CGFloat = CGFloat(arc4random()) % radiusRange
+                let radius:CGFloat = CGFloat(arc4random()) % radiusRange
                 self.drawRandomArc(radius)
                 i = i + 1
             }
@@ -69,7 +70,7 @@ class ShapeView: UIView {
             var i:Int = 0
             while (i <= 40)
             {
-                var radius:CGFloat = CGFloat(arc4random()) % radiusRange
+                let radius:CGFloat = CGFloat(arc4random()) % radiusRange
                 self.drawTriangle(radius)
                 i = i + 1
             }
@@ -80,13 +81,13 @@ class ShapeView: UIView {
             var i:Int = 0
             while (i <= 60)
             {
-                var x = UInt32(self.frame.size.width)
-                var a:UInt32 = arc4random() % x
-                var y = UInt32(self.frame.size.height)
-                var b:UInt32 = arc4random() % y
-                var radius:CGFloat = CGFloat(arc4random()) % radiusRange / 10
-                var lineWith:Float = Float(arc4random()) % Float(5.0)
-                var path:UIBezierPath = self.drawStarBezier(CGFloat(a), y: CGFloat(b), radius: radius, sides: 5, pointyness: 2)
+                let x = UInt32(self.frame.size.width)
+                let a:UInt32 = arc4random() % x
+                let y = UInt32(self.frame.size.height)
+                let b:UInt32 = arc4random() % y
+                let radius:CGFloat = CGFloat(arc4random()) % radiusRange / 10
+                let lineWith:Float = Float(arc4random()) % Float(5.0)
+                let path:UIBezierPath = self.drawStarBezier(CGFloat(a), y: CGFloat(b), radius: radius, sides: 5, pointyness: 2)
                 if (ton == 0) {
                     getRandomColorWithRed().setStroke()
                     getRandomColorWithRed().setFill()
@@ -111,7 +112,7 @@ class ShapeView: UIView {
     }
     
     func showAlert() {
-        var alert: UIAlertView = UIAlertView()
+        let alert: UIAlertView = UIAlertView()
         alert.delegate = self
         alert.title = "Screenshot"
         alert.message = "Do you want to save this image to your camera roll ?"
@@ -121,7 +122,7 @@ class ShapeView: UIView {
     }
     
     func showConfirmation() {
-        var alert: UIAlertView = UIAlertView()
+        let alert: UIAlertView = UIAlertView()
         alert.delegate = self
         alert.title = "Success !"
         alert.message = "Your screenshot has been successfully saved into your camera roll !"
@@ -169,11 +170,11 @@ class ShapeView: UIView {
     }
     
     func drawTriangle(width: CGFloat) {
-        var x = UInt32(self.frame.size.width)
-        var a:UInt32 = arc4random() % x
-        var y = UInt32(self.frame.size.height)
-        var b:UInt32 = arc4random() % y
-        var lineWith:Float = Float(arc4random()) % Float(5.0)
+        let x = UInt32(self.frame.size.width)
+        let a:UInt32 = arc4random() % x
+        let y = UInt32(self.frame.size.height)
+        let b:UInt32 = arc4random() % y
+        let lineWith:Float = Float(arc4random()) % Float(5.0)
         let path = UIBezierPath(equilateralSide: width, center: CGPoint(x: CGFloat(a), y: CGFloat(b)))        
         if (ton == 0) {
             getRandomColorWithRed().setStroke()
@@ -194,13 +195,13 @@ class ShapeView: UIView {
     }
     
     func drawRandomArc(radius: CGFloat) {
-        var x = UInt32(self.frame.size.width)
-        var a:UInt32 = arc4random() % x
-        var y = UInt32(self.frame.size.height)
-        var b:UInt32 = arc4random() % y
+        let x = UInt32(self.frame.size.width)
+        let a:UInt32 = arc4random() % x
+        let y = UInt32(self.frame.size.height)
+        let b:UInt32 = arc4random() % y
         let path = UIBezierPath()
-        var lineWith:Float = Float(arc4random()) % Float(5.0)
-        var startPoint = CGPointMake(CGFloat(a), CGFloat(b))
+        let lineWith:Float = Float(arc4random()) % Float(5.0)
+        let startPoint = CGPointMake(CGFloat(a), CGFloat(b))
         path.addArcWithCenter(startPoint, radius: radius, startAngle: 0, endAngle: 2*CGFloat(M_PI), clockwise: true)
         path.closePath()
         
@@ -246,7 +247,7 @@ class ShapeView: UIView {
         let adjustment = 360/sides/2
         let path = CGPathCreateMutable()
         let points = polygonPointArray(sides,x: x,y: y,radius: radius)
-        var cpg = points[0]
+        let cpg = points[0]
         let points2 = polygonPointArray(sides,x: x,y: y,radius: radius*pointyness,adjustment:CGFloat(adjustment))
         var i = 0
         CGPathMoveToPoint(path, nil, cpg.x, cpg.y)
@@ -267,25 +268,19 @@ class ShapeView: UIView {
 
     
     func getRandomColorWithGreen() -> UIColor{
-        var randomRed:CGFloat = CGFloat(drand48())
-        var randomGreen:CGFloat = CGFloat(drand48())
-        var randomBlue:CGFloat = CGFloat(drand48())
-        var alpha:CGFloat = CGFloat(arc4random()) % CGFloat(1.01)
+        let randomGreen:CGFloat = CGFloat(drand48())
+        let alpha:CGFloat = CGFloat(arc4random()) % CGFloat(1.01)
         return UIColor(red: 0, green: randomGreen, blue: 0, alpha: alpha)
     }
     func getRandomColorWithPurple() -> UIColor{
-        var randomRed:CGFloat = CGFloat(drand48())
-        var randomGreen:CGFloat = CGFloat(drand48())
-        var randomBlue:CGFloat = CGFloat(drand48())
-        var alpha:CGFloat = CGFloat(arc4random()) % CGFloat(1.01)
+        let randomRed:CGFloat = CGFloat(drand48())
+        let alpha:CGFloat = CGFloat(arc4random()) % CGFloat(1.01)
         return UIColor(red: randomRed, green: 0, blue: randomRed, alpha: alpha)
     }
     
     func getRandomColorWithRed() -> UIColor{
-        var randomRed:CGFloat = CGFloat(drand48())
-        var randomGreen:CGFloat = CGFloat(drand48())
-        var randomBlue:CGFloat = CGFloat(drand48())
-        var alpha:CGFloat = CGFloat(arc4random()) % CGFloat(1.01)
+        let randomRed:CGFloat = CGFloat(drand48())
+        let alpha:CGFloat = CGFloat(arc4random()) % CGFloat(1.01)
         return UIColor(red: randomRed, green: 0, blue: 0, alpha: alpha)
     }
 }

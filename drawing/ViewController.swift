@@ -46,7 +46,6 @@ class ViewController: UIViewController, mvc {
     
     @IBAction func pinchDetected(sender: UIPinchGestureRecognizer) {
         let scale = sender.scale
-        let velocity = sender.velocity
         if (isFirstValue) {
             previousValue = Float(scale)
             blurrView.alpha = CGFloat(alphaValue)
@@ -89,7 +88,7 @@ class ViewController: UIViewController, mvc {
     }
     
     func showAlert() {
-        var alert: UIAlertView = UIAlertView()
+        let alert: UIAlertView = UIAlertView()
         alert.delegate = self
         alert.title = "Welcome !"
         alert.message = "First, choose a shape, then change the color and adjust the size ! You can also add or remove the blur effect by pinching the screen. Touch the camera to save the image on your device."
@@ -139,7 +138,7 @@ class ViewController: UIViewController, mvc {
         slider.minimumTrackTintColor = UIColor.purpleColor()
     }
     @IBAction func sliderValueChanged(sender: UISlider) {
-        var currentValue = sender.value * 2
+        let currentValue = sender.value * 2
         self.drawView.radiusRange = CGFloat(currentValue)
         self.drawView.setNeedsDisplay()
     }

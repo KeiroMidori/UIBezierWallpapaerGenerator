@@ -23,7 +23,7 @@ class CustomShapeButton: UIButton {
         }
         else
         {
-            var path:UIBezierPath = self.drawStarBezier(rect.width / 2 - 1, y: 30, radius: 15, sides: 5, pointyness: 2)
+            let path:UIBezierPath = self.drawStarBezier(rect.width / 2 - 1, y: 30, radius: 15, sides: 5, pointyness: 2)
             if (ton == 0) {
                 UIColor.redColor().setStroke()
             }
@@ -43,7 +43,7 @@ class CustomShapeButton: UIButton {
     func drawCircleButton(rect: CGRect) {
         let newRect = CGRectMake(4, 1, rect.width - 8, rect.height - 8)
         let path = UIBezierPath(roundedRect: newRect, byRoundingCorners: UIRectCorner.AllCorners, cornerRadii: CGSize(width: 50, height: 50))
-        var lineWith:Float = 2
+        let lineWith:Float = 2
         path.closePath()
         if (ton == 0) {
             UIColor.redColor().setStroke()
@@ -115,7 +115,7 @@ class CustomShapeButton: UIButton {
         let adjustment = 360/sides/2
         let path = CGPathCreateMutable()
         let points = polygonPointArray(sides,x: x,y: y,radius: radius)
-        var cpg = points[0]
+        let cpg = points[0]
         let points2 = polygonPointArray(sides,x: x,y: y,radius: radius*pointyness,adjustment:CGFloat(adjustment))
         var i = 0
         CGPathMoveToPoint(path, nil, cpg.x, cpg.y)

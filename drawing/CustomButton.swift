@@ -14,9 +14,8 @@ class CustomButton: UIButton {
     override func drawRect(rect: CGRect) {
         
         let newRect = CGRectMake(1, 1, rect.width - 2, rect.height - 2)
-        let path2 = UIBezierPath(rect: newRect)
         let path = UIBezierPath(roundedRect: newRect, byRoundingCorners: UIRectCorner.AllCorners, cornerRadii: CGSize(width: 50, height: 50))
-        var lineWith:Float = 2
+        let lineWith:Float = 2
 
         path.closePath()
         
